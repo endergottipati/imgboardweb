@@ -6,9 +6,6 @@
   "engines": {
     "node": "^12.18.4"
   },
-  "scripts": {
-    "start": "node app.js"
-  },
   "author": "Ender Gottipati",
   "license": "ISC",
   "dependencies": {
