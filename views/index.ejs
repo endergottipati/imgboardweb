@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>ImgBoard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/a830bced63.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <style media="screen">
+
+
+
+      h1{
+        font-family: 'Montserrat', sans-serif;
+      }
+
+
+
+
+      img:hover {
+        animation: shake 0.5s;
+
+        animation-iteration-count: infinite;
+      }
+      img{
+        height:18em;
+        width:14em;
+        margin: 2rem 2rem 2rem 2rem;
+        display: inline;
+        position: relative;
+        border-radius:16px;
+        box-shadow:  15px 15px 27px #ADADB2, -15px -15px 27px #ffffff;
+      }
+
+      @keyframes shake {
+        0% { transform: translate(1px, 1px) rotate(0deg); }
+        10% { transform: translate(-1px, -2px) rotate(-1deg); }
+        20% { transform: translate(-3px, 0px) rotate(1deg); }
+        30% { transform: translate(3px, 2px) rotate(0deg); }
+        40% { transform: translate(1px, -1px) rotate(1deg); }
+        50% { transform: translate(-1px, 2px) rotate(-1deg); }
+        60% { transform: translate(-3px, 1px) rotate(0deg); }
+        70% { transform: translate(3px, 1px) rotate(-1deg); }
+        80% { transform: translate(-1px, -1px) rotate(1deg); }
+        90% { transform: translate(1px, 2px) rotate(0deg); }
+        100% { transform: translate(1px, -2px) rotate(-1deg); }
+      }
+.fa{
+  color: #54a4a6;
+  font-size: 2rem;
+}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="d-flex flex-row-reverse">
+        <div class="d-flex flex-column">
+          <div class="p-2 d-flex justify-content-end">
+
+          <h1 class="text-center display-4 my-4">ImgBoard</h1>
+        </div>
+        <div class="p-2 d-flex justify-content-end">
+
+          <form action="/upload" method="POST" enctype="multipart/form-data">
+            <div class="custom-file mb-3">
+              <input type="file"   id="file" name="file" class="custom-file-input">
+              <label for="file" class="custom-file-label">Choose File</label>
+            </div>
+            <div class="d-flex justify-content-end">
+              <input type="submit" class="btn text-center fa" value="&#xf0aa;">
+            </div>
+          </form>
+        </div>
+
+        </div>
+      </div>
+    </div>
+
+
+      <% if(files){ %>
+        <% files.forEach(function(file){ %>
+          <% if(file.isImage){%>
+            <img src="image/<%= file.filename %>" alt="">
+          <%} else{%>
+            <%= file.filename%>
+            <%}%>
+        <% }) %>
+      <%} else{ %>
+<p>no files to show</p>
+      <%}%>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  </body>
+</html>
