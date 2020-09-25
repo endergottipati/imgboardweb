@@ -8,9 +8,11 @@ const methodOverride  = require('method-override');
 const path = require('path');
 const crypto = require('crypto');
 const mongoose = require("mongoose");
+const favicon = require('serve-favicon')
 
 //use express
 const app = express();
+app.use(favicon(path.join(__dirname, 'public', 'Imgboard.png')))
 app.use(bodyParser.json());
 app.use(methodOverride('_method'));
 //set view with ejs
@@ -101,7 +103,7 @@ app.get('/image/:filename', (req, res)=>{
 
 
 //server
-const port= process.env.port || 3000;
+const port= process.env.port || 8080;
 app.listen(port,function(){
 console.log("Server up");
 });
